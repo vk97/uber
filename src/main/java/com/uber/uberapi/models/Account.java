@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +16,7 @@ public class Account extends Auditable{
     private String username;
     private String password;
 
+//    @ManyToMany(fetch = FetchType.EAGER)
     @ManyToMany
     private List<Role> roles = new ArrayList<>();
 }

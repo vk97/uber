@@ -1,7 +1,6 @@
 package com.uber.uberapi.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,16 +8,19 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Getter
 @Setter
-@Table(name="passenger")
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "passenger")
 public class Passenger extends Auditable  {
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
     private String name;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
     @OneToMany(mappedBy = "passenger")
@@ -26,7 +28,7 @@ public class Passenger extends Auditable  {
 
     private String phoneNumber;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(value=TemporalType.DATE)
     private Date dob;
 
     @OneToOne
